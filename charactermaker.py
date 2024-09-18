@@ -11,6 +11,8 @@ def display_selection():
     selection4 = combos4.get()
     selection5 = combos5.get()
     selection6 = combos6.get()
+    selection7 = combos7.get()
+    selection8 = combos8.get()
     if selection == 'Dark':
         selection = '00Dark'
     if selection == 'Light':
@@ -47,7 +49,27 @@ def display_selection():
                 title="Alert"
             )
         valer = 1
-    ckey = selection + selection2 + selection3 + selection4 + selection5 + selection6
+    try:
+        if int(selection7) < 10:
+            selection7 = '0' + selection7
+    except ValueError:
+        if valer == 0:
+            messagebox.showinfo(
+                message=f"Please fill out all of the fields before generating the code.",
+                title="Alert"
+            )
+        valer = 1
+    try:
+        if int(selection8) < 10:
+            selection8 = '0' + selection8
+    except ValueError:
+        if valer == 0:
+            messagebox.showinfo(
+                message=f"Please fill out all of the fields before generating the code.",
+                title="Alert"
+            )
+        valer = 1
+    ckey = selection + selection2 + selection3 + selection4 + selection5 + selection6 + selection7 + selection8
     if valer == 0:
         messagebox.showinfo(
             message=f"Your character key: {ckey}",
@@ -138,5 +160,25 @@ combos6.place(x=90,y=180)
 # Add a button to display the selected option
 label6 = tk.Label(root, text="Activeness:")
 label6.place(x=10,y=178)
+
+selected_option7 = tk.StringVar()
+combos7 = ttk.Combobox(
+    state="readonly",
+    values=["1", "2","3","4","5","6","7","8","9","10"]
+)
+combos7.place(x=90,y=212)
+# Add a button to display the selected option
+label7 = tk.Label(root, text="Playfulness:")
+label7.place(x=10,y=210)
+
+selected_option8 = tk.StringVar()
+combos8 = ttk.Combobox(
+    state="readonly",
+    values=["1", "2","3","4","5","6","7","8","9","10"]
+)
+combos8.place(x=90,y=244)
+# Add a button to display the selected option
+label8 = tk.Label(root, text="Kindness:")
+label8.place(x=10,y=242)
 
 root.mainloop()

@@ -5,6 +5,7 @@ import webbrowser
 import simsutils
 from playsound import playsound
 from PIL import ImageTk, Image
+families = []
 window = Tk()
 window.geometry('750x500')
 window.title("OpenSims")
@@ -40,8 +41,13 @@ def sim3f():
 def newfamily():
     print('new family creation started ')
     answer = simpledialog.askstring("Families", "Family Surname:", parent=window)
+    families.append(answer)
+    print(families)
+    openfamilywindow()
 def deletefamily():
-    print('deleting family')
+    print('wip')
+    families = []
+    print(families)
 def movefamily():
     print('moving family')
 def openfamilywindow():
@@ -75,6 +81,14 @@ def openfamilywindow():
         command=movefamily
     )
     button_close4.place(x=280, y=260)
+    button_close5 = Button(
+        secondary_window,
+        text='',
+        command=movefamily
+    )
+    button_close5.config(text=families[0])
+    button_close5.place(x=40, y=40)
+
 play1 = Label(text="Play")
 play1.place(x=115, y=175)
 startmusic()
